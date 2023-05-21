@@ -1,33 +1,39 @@
-{% extends "gamebase.html" %}
-
-{% block css %}
-    {% load static %} 
-    <link rel="stylesheet" type="text/css" href="{% static 'fried.css' %}">
-{% endblock %}
-
-{% block mention %}
-    <h2 class="item">튀김기로 치킨을 드래그 해서 튀겨주세요!</h2>
-{% endblock %}
-
-{% block chicken_image %}
+{% extends "gamebase.html" %} {% block css %} {% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'fried.css' %}" />
+{% endblock %} {% block mention %}
+<h2 class="item">튀김기로 치킨을 드래그 해서 튀겨주세요!</h2>
+{% endblock %} {% block chicken_image %}
 <div class="contianer">
-    <div id="timer"></div>
-    <div class="chicken">
-        <img src="{% static '/image/fried_ch.jpg' %}" id="chicken" alt="chicken_image">
-    </div>
-    <div class="machine">
-        <img src="{% static '/image/fried2.gif' %}" id="machine" alt="chicken_machine">
-    </div>
-    <div class="transformed-machine">
-      <img src="{% static '/image/fried1.gif' %}" id="transformed-machine" alt="transformed-machine" style="display: none;">
-    </div>
+  <div id="timer"></div>
+  <div class="chicken">
+    <img
+      src="{% static '/image/fried_ch.jpg' %}"
+      id="chicken"
+      alt="chicken_image"
+    />
+  </div>
+  <div class="machine">
+    <img
+      src="{% static '/image/fried2.gif' %}"
+      id="machine"
+      alt="chicken_machine"
+    />
+  </div>
+  <div class="transformed-machine">
+    <img
+      src="{% static '/image/fried1.gif' %}"
+      id="transformed-machine"
+      alt="transformed-machine"
+      style="display: none"
+    />
+  </div>
 </div>
 
 <div class="modal hidden">
   <div class="modal-content">
     <div class="box">
       <h2>연새치킨이 찾아왔어요!</h2>
-      <img src="../static/image/kfc.jpg"/>
+      <img src="../static/image/kfc.jpg" />
       <p>촉촉하게~ 쫄깃하게~</p>
       <p>껍질은 바삭하게~</p>
       <p>아 너무 맛있어~ 아 환상의 맛~</p>
@@ -42,83 +48,121 @@
   <div class="modal-overlay"></div>
 </div>
 
-{% endblock %}
-
-{% block progress_bar %}
-{% endblock %}
-
-{% block extra_scripts %}
+{% endblock %} {% block progress_bar %} {% endblock %} {% block extra_scripts %}
 <script>
-    var base_audio_play = true;
-    const chickenImage = document.getElementById('chicken');
-    const machineImage = document.getElementById('machine');
-    const transformed_machine = document.getElementById('transformed-machine');
-    const timerElement = document.getElementById('timer');
-    const modal = document.querySelector(".modal");
+  var base_audio_play = true;
+  const chickenImage = document.getElementById('chicken');
+  const machineImage = document.getElementById('machine');
+  const transformed_machine = document.getElementById('transformed-machine');
+  const timerElement = document.getElementById('timer');
+  const modal = document.querySelector(".modal");
 
-    let timer;
-    let timeLeft = 5;
+  let timer;
+  let timeLeft = 5;
 
-    chickenImage.addEventListener('touchstart', (event) => {
-        event.preventDefault(); // 기본 동작 방지
-        chickenImage.style.display = 'none';
-        timer = setInterval(updateTimer, 1000);
-        machineImage.style.display = 'none';
-        transformed_machine.style.display = 'flex';
-    });
+  chickenImage.addEventListener('touchstart', (event) => {
+      event.preventDefault(); // 기본 동작 방지
+      chickenImage.style.position = 'absolute'; // 이미지 위치를 절대값으로 설정
+      chickenImage.style.zIndex = 1000; // 이미지를 화면 최상위로 이동
+      moveAt(event.touches[0].pageX, event.touches[0].pageY);
+  });
 
-    function updateTimer() {
-        if (timeLeft > 0) {
-            timerElement.textContent = `조리를 시작합니다. 남은 시간: ${timeLeft}초`;
-            timeLeft--;
-        } else {
-            clearInterval(timer);
-            timerElement.textContent = `조리를 시작합니다. 남은 시간: 0초`;
-            openModal();
-        }
-    }
+  chickenImage.addEventListener('touchmove', (event) => {
+      event.preventDefault(); // 기본 스크롤 동작 방지
+      moveAt(event.touches[0].pageX, event.touches[0].pageY);
+  });
 
-    function openModal() {
-      modal.classList.remove('hidden');
-      fetch('/chicken-count/', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-            "id": {{ user.id }}
-        })
+  chickenImage.addEventListener('touchend', (event) => {
+      chickenImage.style.display = 'none';
+      timer = setInterval(updateTimer, 1000);
+      machineImage.style.display = 'none';
+      transformed_machine.style.display = 'flex';
+  });
+
+  function moveAt(pageX, pageY) {
+      chickenImage.style.left = pageX - chickenImage.offsetWidth / 2 + 'px';
+      chickenImage.style.top = pageY - chickenImage.offsetHeight / 2 + 'px';
+  }
+
+  function updateTimer() {
+      if (timeLeft > 0) {
+          timerElement.textContent = `조리를 시작합니다. 남은 시간: ${timeLeft}초`;
+          timeLeft--;
+      } else {
+          clearInterval(timer);
+          timerElement.textContent = `조리를 시작합니다. 남은 시간: 0초`;
+          openModal();
+      }
+  }
+  var base_audio_play = true;
+  const chickenImage = document.getElementById('chicken');
+  const machineImage = document.getElementById('machine');
+  const transformed_machine = document.getElementById('transformed-machine');
+  const timerElement = document.getElementById('timer');
+  const modal = document.querySelector(".modal");
+
+  let timer;
+  let timeLeft = 5;
+
+  chickenImage.addEventListener('touchstart', (event) => {
+      event.preventDefault(); // 기본 동작 방지
+      chickenImage.style.display = 'none';
+      timer = setInterval(updateTimer, 1000);
+      machineImage.style.display = 'none';
+      transformed_machine.style.display = 'flex';
+  });
+
+  function updateTimer() {
+      if (timeLeft > 0) {
+          timerElement.textContent = `조리를 시작합니다. 남은 시간: ${timeLeft}초`;
+          timeLeft--;
+      } else {
+          clearInterval(timer);
+          timerElement.textContent = `조리를 시작합니다. 남은 시간: 0초`;
+          openModal();
+      }
+  }
+
+  function openModal() {
+    modal.classList.remove('hidden');
+    fetch('/chicken-count/', {
+      method: 'POST',
+      headers: {
+          'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+          "id": {{ user.id }}
       })
-        .then(response => response.json())
-        .then(data => {
-            if (data) {
-            // 성공적인 응답을 받았을 때의 동작
-            // 예: 모달 닫기, 페이지 리로드 등
-            } else {
-            // 실패한 응답을 받았을 때의 동작
-            // 예: 오류 메시지 표시 등
-            }
-        })
-        .catch(error => {
-            // 에러 처리 로직
-            console.error(error);
-        });
-    };
+    })
+      .then(response => response.json())
+      .then(data => {
+          if (data) {
+          // 성공적인 응답을 받았을 때의 동작
+          // 예: 모달 닫기, 페이지 리로드 등
+          } else {
+          // 실패한 응답을 받았을 때의 동작
+          // 예: 오류 메시지 표시 등
+          }
+      })
+      .catch(error => {
+          // 에러 처리 로직
+          console.error(error);
+      });
+  };
 
 
-    const closeBtn = modal.querySelector(".close");
-    const overlay = modal.querySelector(".modal-overlay");
+  const closeBtn = modal.querySelector(".close");
+  const overlay = modal.querySelector(".modal-overlay");
 
-    /* 모달 닫을 때의 실행할 함수 정의하기 */
+  /* 모달 닫을 때의 실행할 함수 정의하기 */
 
-    function closeModal() {
-        modal.classList.add('hidden');
-    }
+  function closeModal() {
+      modal.classList.add('hidden');
+  }
 
-    /* 버튼 클릭했을 때 모달 비활성화하는 함수 실행하기 */
+  /* 버튼 클릭했을 때 모달 비활성화하는 함수 실행하기 */
 
-    closeBtn.addEventListener("click", closeModal);
-    overlay.addEventListener("click", closeModal);
-
+  closeBtn.addEventListener("click", closeModal);
+  overlay.addEventListener("click", closeModal);
 </script>
 {% endblock %}
