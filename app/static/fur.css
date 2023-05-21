@@ -20,6 +20,7 @@ p {
   #fur-image {
     display: block;
     margin: 0 auto;
+    width: 100%;
   }
   .canvas-container {
     position: absolute;
@@ -30,10 +31,6 @@ p {
     justify-content: center;
     align-items: center;
   }
- #fur-image {
-    width: 100%;
-}
-  
   
 .top {
     position: absolute;
@@ -69,12 +66,9 @@ p {
   .modal-content {
     position: relative;
     background-color: white;
-    padding: 50px 80px;
-  
-    width: 20%;
-  
+    width: 70%;
     text-align: center;
-    border-radius: 5px;
+    height: 40%;
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2), 0 6px 6px rgba(0, 0, 0, 0.4);
     z-index: 10;
   }
@@ -84,6 +78,11 @@ p {
     border: 2px solid black;
     border-radius: 10px;
     font-family: 'TmoneyRoundWindExtraBold';
+    height: 90%;
+    width: 90%;
+    transform: translate(5%, 5%);
+    padding : 0;
+    margin : 0;
   }
   
   i {
@@ -95,39 +94,6 @@ p {
 div > .hidden {
   display : none;
 }
-/* 추가적인 스타일을 여기에 작성하세요. */
-.modal {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.modal-overlay {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.7);
-  z-index: 1;
-}
-
-.modal-content {
-  position: relative;
-  background-color: white;
-  padding: 50px 80px;
-
-  width: 20%;
-
-  text-align: center;
-  border-radius: 5px;
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2), 0 6px 6px rgba(0, 0, 0, 0.4);
-  z-index: 10;
-}
 
 .close {
   position: absolute;
@@ -136,15 +102,4 @@ div > .hidden {
 
   border: white;
   background-color: white;
-}
-
-.box {
-  border: 2px solid black;
-  font-family: 'TmoneyRoundWindExtraBold';
-}
-
-i {
-  width: 50px;
-  height: 50px;
-  margin-top: 40px;
 }

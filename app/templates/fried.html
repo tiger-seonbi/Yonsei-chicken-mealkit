@@ -13,34 +13,35 @@
 <div class="contianer">
     <div id="timer"></div>
     <div class="chicken">
-        <img src="{% static '/image/fried_ch.jpg' %}" id="chicken" alt="chicken_image">
+        <img src="{% static '/image/fried_ch.jpg' %}" id="chicken" alt="chicken_image" draggable="true">
     </div>
     <div class="machine">
         <img src="{% static '/image/fried2.gif' %}" id="machine" alt="chicken_machine">
     </div>
     <div class="transformed-machine">
-      <img src="{% static '/image/fried1.gif' %}" id="transformed-machine" alt="transformed-machine" style="display: none;">
+      <img src="{% static '/image/fried1.gif' %}" id="transformed-machine" alt="transformed-machine" style="display: none";>
     </div>
 </div>
 
-<div class="modal hidden">
-  <div class="modal-content">
-    <div class="box">
-      <h2>연새치킨이 찾아왔어요!</h2>
-      <img src="../static/image/kfc.jpg"/>
-      <p>촉촉하게~ 쫄깃하게~</p>
-      <p>껍질은 바삭하게~</p>
-      <p>아 너무 맛있어~ 아 환상의 맛~</p>
-      <p>아~ 아~ 한마리 더 먹고 싶다~</p>
 
-      <a href="{% url 'main' %}">홈으로</a>
-      <a href="{% url 'rank' %}">치킨 창고</a>
+    <div class="modal hidden">
+      <div class="modal-content">
+        <div class="box">
+          <h2>연새치킨이 찾아왔어요!</h2>
+          <img src="../static/image/kfc.jpg"/>
+          <p>촉촉하게~ 쫄깃하게~</p>
+          <p>껍질은 바삭하게~</p>
+          <p>아 너무 맛있어~ 아 환상의 맛~</p>
+          <p>아~ 아~ 한마리 더 먹고 싶다~</p>
 
-      <i class="fas fa-duotone fa-rocket fa-bounce fa-2xl"></i>
+          <a href="{% url 'main' %}">홈으로</a>
+          <a href="{% url 'rank' %}">치킨 창고</a>
+
+          <i class="fas fa-duotone fa-rocket fa-bounce fa-2xl"></i>
+        </div>
     </div>
+    <div class="modal-overlay"></div>
   </div>
-  <div class="modal-overlay"></div>
-</div>
 
 {% endblock %}
 
@@ -59,12 +60,23 @@
     let timer;
     let timeLeft = 5;
 
-    chickenImage.addEventListener('touchstart', (event) => {
+    machineImage.addEventListener('dragover', (event) => {
+        event.preventDefault(); // 기본 동작 방지
+    });
+
+    machineImage.addEventListener('drop', (event) => {
         event.preventDefault(); // 기본 동작 방지
         chickenImage.style.display = 'none';
         timer = setInterval(updateTimer, 1000);
         machineImage.style.display = 'none';
         transformed_machine.style.display = 'flex';
+    });
+
+    machineImage.addEventListener('dragleave', (event) => {
+        event.preventDefault(); // 기본 동작 방지
+        chickenImage.style.display = 'inline-block';
+        clearInterval(timer);
+        timerElement.textContent = '';
     });
 
     function updateTimer() {
@@ -112,13 +124,14 @@
     /* 모달 닫을 때의 실행할 함수 정의하기 */
 
     function closeModal() {
-        modal.classList.add('hidden');
-    }
+    modal.classList.add('hidden');
+  }
 
     /* 버튼 클릭했을 때 모달 비활성화하는 함수 실행하기 */
 
     closeBtn.addEventListener("click", closeModal);
     overlay.addEventListener("click", closeModal);
 
-</script>
-{% endblock %}
+
+  </script>
+  {% endblock %}

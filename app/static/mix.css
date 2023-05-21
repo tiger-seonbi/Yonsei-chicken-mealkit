@@ -4,13 +4,6 @@
     font-weight: normal;
     font-style: normal;
   }
-  body {
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: relative;
-  }
   
   .canvas-container {
     position: absolute;
@@ -23,7 +16,6 @@
     z-index: 1;
   }
   
-
   .canvas-container img {
     position:relative;
     height: 500px;
@@ -34,9 +26,7 @@
   #canvas{
     background-image: url('{% static '/image/mix.png' %}');
     background-size: cover;
-
   }
-
 
   .top {
     position: absolute;
@@ -48,17 +38,10 @@
     font-family: 'TmoneyRoundWindExtraBold';
   }
 
-
-
 div > .hidden {
   display : none;
 }
-/*.container > button {
-  min-width: 30px;
-  font-family: "Black Han Sans";
-  marin-left: 5%;
-}
-*/
+
 .modal {
   position: fixed;
   top: 0;
@@ -82,21 +65,17 @@ div > .hidden {
 .modal-content {
   position: relative;
   background-color: white;
-  padding: 50px 80px;
-
-  width: 20%;
-
+  width: 70%;
   text-align: center;
-  border-radius: 5px;
+  height: 40%;
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2), 0 6px 6px rgba(0, 0, 0, 0.4);
-  z-index: 20;
+  z-index: 10;
 }
 
 .close {
   position: absolute;
   top: 10px;
   right: 10px;
-
   border: white;
   background-color: white;
   z-index: 20;
@@ -104,7 +83,19 @@ div > .hidden {
 
 .box {
   border: 2px solid black;
+  border-radius: 10px;
+  font-family: 'TmoneyRoundWindExtraBold';
+  height: 80%;
+  width: 90%;
+  transform: translate(5%, 5%);
+  padding : 0;
+  margin : 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
+
 
 i {
   width: 50px;
