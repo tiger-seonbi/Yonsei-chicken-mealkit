@@ -1,0 +1,124 @@
+{% extends 'gamebase.html' %}
+
+{% block css %}
+{% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'fur.css' %}">
+{% endblock %}
+
+<div class="canvas-container">
+{% block mention %}
+<div class="top">
+<p>터치하여 연새를 혼내주세요!</p>
+</div>
+<div class="modal hidden">
+  <div class="modal-content">
+    <div class="box">
+      <h2>손질 완료!!</h2>
+      <p>이제 염지한 연새에</p>
+      <p>튀김반죽을 실컷 발라주세요</p>
+      <a href="/mix">다음 단계</a>
+      <i class="fas fa-duotone fa-rocket fa-bounce fa-2xl"></i>
+    </div>
+  </div>
+  <div class="modal-overlay"></div>
+</div>
+{% endblock %}
+
+{% block chicken_image %}
+<img id="fur-image" src="{% static 'full_fur_image.jpg' %}" alt="Chicken Fur">
+
+{% endblock %}
+
+{% block extra_scripts %}
+<script>
+var base_audio_play = true;
+document.addEventListener('DOMContentLoaded', function() {
+  // 변수 초기화
+  var imageCount = 0;
+  var maxClicks = 9;
+  var furImage = document.getElementById('fur-image');
+  var progressBar = document.getElementById('progress-bar');
+  
+  // 이미지 클릭 이벤트 처리
+  furImage.addEventListener('click', clickHandler);
+  const modal = document.querySelector(".modal");
+
+  
+  function openModal() {
+    modal.classList.remove('hidden');
+  };
+
+  function clickHandler() {
+    imageCount++;
+    
+    if (imageCount % 3 === 0 && imageCount <= maxClicks) {
+      if (imageCount === maxClicks) {
+        furImage.removeEventListener('click', clickHandler);
+        furImage.src = '/static/no_fur_image.jpg';
+        console.log("modal", modal);
+        openModal();
+      }
+      else {
+          furImage.src = `/static/${imageCount / 3}_3_fur_image.jpg`;
+          updateProgressBar();
+          
+      }
+      
+    }
+  }
+  
+  // 화살표 버튼 생성 함수
+  
+});
+
+
+const closeBtn = modal.querySelector(".close");
+const overlay = modal.querySelector(".modal-overlay");
+
+
+function closeModal() {
+  modal.classList.add('hidden');
+}
+
+closeBtn.addEventListener("click", closeModal);
+overlay.addEventListener("click", closeModal);
+
+
+document.addEventListener('DOMContentLoaded', function() {
+  var gazeImg = document.querySelector('.gazeimg');
+  var container = document.querySelector('.container');
+  var maxWidth = container.offsetWidth - gazeImg.offsetWidth;
+  var isMovingRight = true;
+  var step = 5;
+  var delay = 1000; // 애니메이션 간격을 조정할 수 있는 딜레이 값 (밀리초)
+
+  function moveGazeImg() {
+    var currentLeft = parseInt(gazeImg.style.left) || 0;
+
+    if (isMovingRight) {
+      currentLeft += step;
+      if (currentLeft >= maxWidth) {
+        currentLeft = maxWidth;
+        isMovingRight = false;
+      }
+    } else {
+      currentLeft -= step;
+      if (currentLeft <= 0) {
+        currentLeft = 0;
+        isMovingRight = true;
+      }
+    }
+
+    gazeImg.style.left = currentLeft + 'px';
+    setTimeout(moveGazeImg, delay);
+  }
+
+  moveGazeImg();
+});
+</script>
+{% endblock %}
+
+{% block progress_bar %}
+    <!-- 완성도 게이지를 출력하는 위치에 대한 내용을 추가합니다. -->
+{% endblock %}
+</div>

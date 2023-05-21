@@ -1,0 +1,10 @@
+@font-face {
+    font-family: 'Dongle', sans-serif;
+    src: url('https://fonts.googleapis.com/css2?family=Dongle&display=swap');
+    font-weight: normal;
+    font-style: normal;
+}
+.chicken-image img {
+    max-width: 100%;
+    height: auto;
+}

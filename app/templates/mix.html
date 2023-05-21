@@ -1,0 +1,159 @@
+{% extends "gamebase.html" %}
+
+{% block css %}
+    {% load static %} 
+    <link rel="stylesheet" type="text/css" href="{% static 'mix.css' %}">
+    <style>
+      /* 추가된 CSS 스타일 */
+      .canvas-container {
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+      }
+
+      #character {
+          position: relative;
+          height: 500px;
+          width: 1350px;
+          z-index: 1;
+      }
+
+      #canvas {
+          position: absolute;
+          top: 0;
+          left: 0;
+          z-index: 2;
+      }
+    </style>
+  {% endblock %}
+
+{% block mention %}
+    <p class="top">드래그해서 치킨 반죽을 해주세요</p>
+    <div class="modal hidden" >
+      <div class="modal-content">
+        <div class="box">
+          <h2>반죽 완성!</h2>
+          <p>튀길 준비를 해볼까요?</p>
+          <p>연새 참교육이 거의 다 왔어요</p>
+          <a href="/fried">다음 단계로</a>
+          <i class="fas fa-duotone fa-rocket fa-bounce fa-2xl"></i>
+        </div>
+    </div>
+    <div class="modal-overlay"></div>
+{% endblock %}
+
+{% block chicken_image %}
+    <div class="canvas-container">
+        <img id="character" src="{% static '/image/mix.png' %}" alt="Character" />
+        <canvas id="canvas"></canvas>
+    </div> 
+</div>
+
+{% endblock %}
+
+{% block progress_bar %}
+    <!-- 완성도 게이지를 출력하는 위치에 대한 내용을 추가합니다. -->
+{% endblock %}
+
+{% block extra_scripts %}
+<script>
+   var base_audio_play = true;
+const canvas = document.getElementById('canvas');
+// 캔버스와 이미지 관련 변수
+const context = canvas.getContext('2d');
+const characterImg = document.getElementById('character');
+const canvasContainer = document.getElementById('canvas-container');
+const modal = document.querySelector(".modal");
+let isDrawing = false;
+let previousX, previousY;
+
+characterImg.addEventListener('load', function() {
+    canvas.width = characterImg.width;
+    canvas.height = characterImg.height;
+});
+
+function startDrawing(event) {
+    isDrawing = true;
+    const rect = canvas.getBoundingClientRect();
+    previousX = event.clientX - rect.left;
+    previousY = event.clientY - rect.top;
+}
+
+function openModal() {
+    modal.classList.remove('hidden');
+  };
+
+function draw(event) {
+    if (!isDrawing) return;
+
+    const rect = canvas.getBoundingClientRect();
+    const x = event.clientX - rect.left;
+    const y = event.clientY - rect.top;
+
+    context.strokeStyle = 'yellow';
+    context.lineWidth = 15;
+    context.lineCap = 'round';
+    
+    context.beginPath();
+    context.moveTo(previousX, previousY);
+    context.lineTo(x, y);
+    context.stroke();
+
+    previousX = x;
+    previousY = y;
+}
+
+function stopDrawing(event) {
+    isDrawing = false;
+    
+    const imageData = context.getImageData(0, 0, canvas.width, canvas.height);
+    const pixels = imageData.data;
+    const halfWidth = (canvas.width * canvas.height) / 13;
+    let coloredPixelCount = 0;
+  
+    // 색칠된 픽셀 개수 세기
+    for (let i = 0; i < pixels.length; i += 4) {
+        const r = pixels[i];
+        const g = pixels[i + 1];
+        const b = pixels[i + 2];
+        const a = pixels[i + 3];
+
+        if (r === 255 && g === 255 && b === 0 && a === 255) {
+            coloredPixelCount++;
+        }
+    }
+
+    console.log(coloredPixelCount, halfWidth);
+    // 색칠된 부분이 이미지 전체 너비의 절반을 초과하는지 확인
+    if (coloredPixelCount > halfWidth ) {
+        // 팝업 창 띄우기
+        openModal();
+
+
+    } else {
+        stopDrawing2();
+    }
+    
+}
+
+
+function stopDrawing2(event) {
+    isDrawing = false;
+}
+
+// 이벤트 핸들러 등록
+canvas.addEventListener('mousedown', startDrawing);
+canvas.addEventListener('mousemove', draw);
+canvas.addEventListener('mouseup', stopDrawing);
+canvas.addEventListener('mouseleave', function(event) {
+    if (isDrawing) {
+        stopDrawing2();
+    }
+});
+
+</script>
+{% endblock %}
+
+
+
