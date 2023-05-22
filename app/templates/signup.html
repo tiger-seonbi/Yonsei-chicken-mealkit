@@ -13,12 +13,14 @@
     <div class="name-box">닉네임 : 
         <input type="text" placeholder="닉네임을 입력해주세요" name="usernickname">
     </div>
-    <div class="department-box">단과대 : 
-        <select name="department">
-            {% for department in departments  %}
-            <option>{{ department }}</option>
-            {% endfor %}
-        </select>
+    <div class="department-box">단과대 :
+     
+    <select name="department">
+        <option value="engineer">공과대학</option>
+        <option value="business">경영대학</option>
+    </select>
+        
+    
     </div>
     <div class="id-box">아이디 : 
         <input type="text" placeholder="아이디를 입력해주세요" name="userid">

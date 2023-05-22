@@ -15,20 +15,27 @@ def fur(request):
   
   return render(request, 'fur.html')
 
+@login_required(login_url="/login/")
 def fried(request):
-  
-  return render(request, 'fried.html')
+  CountChicken.objects.create(
+    quantity = 1
+  )
+  result = CountChicken.objects.all()
+  count = len(result)
+  return render(request, 'fried.html', {'count':count })
 
 def mix(request):
   
   return render(request, 'mix.html')
 
+
 @login_required(login_url="/login/")
 def rank(request):
-  
-  
+  result = CountChicken.objects.all()
+  count = len(result)
+  return render(request, 'rank.html', {'count':count })
 
-  return render(request, 'rank.html')
+
 
 def login(request):
   if request.method == 'POST':
@@ -99,45 +106,45 @@ def signup(request):
       return redirect('login') 
     return render(request, 'signup.html', {'departments': departments})
 
-def add_chicken(user, department):
-  # 기존 치킨 수량 가져오기
-  chicken = CountChicken.objects.get(user=user, department=department)
-  temp = chicken.quantity
-  temp += 1
-  chicken.quantity = temp
-  chicken.save()
+# def add_chicken(user, department):
+#   # 기존 치킨 수량 가져오기
+#   chicken = CountChicken.objects.get(user=user, department=department)
+#   temp = chicken.quantity
+#   temp += 1
+#   chicken.quantity = temp
+#   chicken.save()
 
-def create_chicken(user, department):
-  # 새로운 치킨 생성
-  chicken = CountChicken.objects.create(user=user, department=department, quantity=1)
+# def create_chicken(user, department):
+#   # 새로운 치킨 생성
+#   chicken = CountChicken.objects.create(user=user, department=department, quantity=1)
 
-@csrf_exempt
-def count(request):
+# @csrf_exempt
+# def count(request):
     
-    if request.method == 'POST':
-      request_body = json.loads(request.body)
-      # print('-------민기오빠세션', request_body)
+#     if request.method == 'POST':
+#       request_body = json.loads(request.body)
+#       # print('-------민기오빠세션', request_body)
     
    
-      # print("count 시작")
-    # 사용자와 부서 정보 가져오기
+#       # print("count 시작")
+#     # 사용자와 부서 정보 가져오기
     
-      user_id = request_body["id"]
-      # print(user_id);
-      # print(request.user, '받아온 것')
+#       user_id = request_body["id"]
+#       # print(user_id);
+#       # print(request.user, '받아온 것')
 
-      person = Person.objects.get(pk = user_id)
+#       person = Person.objects.get(pk = user_id)
 
-      department = person.department  
+#       department = person.department  
 
-      # 치킨 생성 또는 추가
-      try:
-          # print("치킨 있다")
-          # 이미 치킨이 있는 경우
-          add_chicken(person.user, department)
-      except CountChicken.DoesNotExist:
-          # print("치킨 없다")
-          # 치킨이 없는 경우
-          create_chicken(person.user, department)
+#       # 치킨 생성 또는 추가
+#       try:
+#           # print("치킨 있다")
+#           # 이미 치킨이 있는 경우
+#           add_chicken(person.user, department)
+#       except CountChicken.DoesNotExist:
+#           # print("치킨 없다")
+#           # 치킨이 없는 경우
+#           create_chicken(person.user, department)
 
-      return HttpResponse(json.dumps({'success': True}))
+#       return HttpResponse(json.dumps({'success': True}))
