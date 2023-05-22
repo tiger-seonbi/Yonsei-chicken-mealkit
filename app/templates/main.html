@@ -1,78 +1,73 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>연X 치킨 튀기기</title>
-  {% load static %}
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>연X 치킨 튀기기</title>
+    {% load static %}
 
-  <link rel="stylesheet" type="text/css" href="{% static 'main.css' %}">
-</head>
+    <link rel="stylesheet" type="text/css" href="{% static 'main.css' %}" />
+  </head>
 
-<body>
-  <div class="container">
-    <div class="image">
-      <img src="{% static '/image/main.gif'%}">
-    </div>
-    <div class="game-name">
-      연새 치킨 튀기기
-    </div>
-    <div class="game-actions">
-      <div class="game-action">
-        <a onclick="playAudio1(event)" href="#" id="audioElement">
-          연새 잡기
-        </a>
+  <body>
+    <div class="container">
+      <div class="image">
+        <img src="{% static '/image/main.gif'%}" />
       </div>
-      <div class="game-action">
-        <a onclick="playAudio2(event)" href="/rank" id="audioElement">연새 닭장</a>
+      <div class="game-name">연새 치킨 튀기기</div>
+      <div class="game-actions">
+        <div class="game-action">
+          <a onclick="playAudio1(event)" href="#" id="audioElement">
+            연새 잡기
+          </a>
+        </div>
+        <div class="game-action">
+          <a onclick="playAudio2(event)" href="/rank" id="audioElement"
+            >연새 닭장</a
+          >
+        </div>
       </div>
-    </div>
-    <div class="header">
-      <div class="user-actions">
-        {% if not user.is_authenticated %}
-        <div class="user-action">
-          <a href="/login">로그인</a>
+      <div class="header">
+        <div class="user-actions">
+          {% if not user.is_authenticated %}
+          <div class="user-action">
+            <a href="/login">로그인</a>
+          </div>
+          {% endif %} {% if user.is_authenticated %}
+          <div class="user-action">
+            <a href="/logout">로그아웃</a>
+          </div>
+          <div class="user-action">안녕하세요 {{ user.username }}요리사님!</div>
+          {% endif %} {% if not user.is_authenticated %}
+          <div class="user-action">
+            <a href="/signup">회원가입</a>
+          </div>
+          {% endif %}
         </div>
-        {% endif %}
-        {% if user.is_authenticated %}
-        <div class="user-action">
-          <a href="/logout">로그아웃</a>
-        </div>
-        <div class="user-action">
-          안녕하세요 {{ user.username }}요리사님!
-        </div>
-        {% endif %}
-        {% if not user.is_authenticated %}
-        <div class="user-action">
-          <a href="/signup">회원가입</a>
-        </div>
-        {% endif %}
       </div>
     </div>
-  </div>
 
-  <script>
-    function playAudio1(event) {
-      event.preventDefault();
-      var audioElement = new Audio("{% static 'audio/dakcry.mp3' %}")
-      audioElement.play();
-      setTimeout(() => {
-        location.href = "{% url 'fur' %}";
-      }, 5000);
-    }
-    function playAudio2(event) {
-      event.preventDefault();
-      var audioElement = new Audio("{% static 'audio/tiger.mp3' %}")
-      audioElement.play();
-      setTimeout(() => {
-        location.href = "{% url 'rank' %}";
-      }, 4000);
-    }
-  </script>
-</body>
+    <script>
+      function playAudio1(event) {
+        event.preventDefault();
+        var audioElement = new Audio("{% static 'audio/dakcry.mp3' %}");
+        audioElement.play();
+        setTimeout(() => {
+          location.href = "{% url 'fur' %}";
+        }, 3000);
+      }
+      function playAudio2(event) {
+        event.preventDefault();
+        var audioElement = new Audio("{% static 'audio/tiger.mp3' %}");
+        audioElement.play();
+        setTimeout(() => {
+          location.href = "{% url 'rank' %}";
+        }, 3000);
+      }
+    </script>
+  </body>
 </html>
-
 
 <!--
 <!DOCTYPE html>
