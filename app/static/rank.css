@@ -1,78 +1,41 @@
-/* rank.css */
-/* rank.css */
+/* rank.css /
+/ rank.css */
 
-/* 전체 페이지 스타일 */
-/* 전체 페이지 스타일 */
+/* 전체 페이지 스타일 /
+/ 전체 페이지 스타일 /
 @font-face {
-  font-family: 'TmoneyRoundWindExtraBold';
-  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-07@1.0/TmoneyRoundWindExtraBold.woff') format('woff');
-  font-weight: normal;
-  font-style: normal;
+font-family: "TmoneyRoundWindExtraBold";
+src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-07@1.0/TmoneyRoundWindExtraBold.woff")
+format("woff");
+font-weight: normal;
+font-style: normal;
+
 }
 body {
-  font-family: Arial, sans-serif;
-  background-color: #f0f0f0;
-  margin: 0;
-  padding: 0;
+font-family: Arial, sans-serif;
+background-color: #f0f0f0;
+margin: 0;
+padding: 0;
 }
-
-/* 상단 랭크 정보 스타일 */
 .rank-top {
   background-color: #fff;
   padding: 20px;
+  padding-top: 10%;
   text-align: center;
+  font-family: "TmoneyRoundWindExtraBold";
 }
 
 .rank-top h2 {
-  font-size: 24px;
+  font-size: 30px;
   margin: 0;
+  border-bottom: black solid 1px;
+  padding-bottom: 1%;
 }
 
 .rank-top h3 {
-  font-size: 18px;
-  margin: 10px 0;
-}
-
-/* 버튼 스타일 */
-button {
-  padding: 10px 20px;
-  font-size: 16px;
-  background-color: #007bff;
-  color: #fff;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  display: block;
-  margin-bottom: 10px;
-}
-
-/* 랭킹 목록 스타일 */
-.rank-body {
-  margin-top: 20px;
-  background-color: #fff;
-  padding: 20px;
-  font-family: Arial, sans-serif;
-  background-color: #f0f0f0;
-  margin: 0;
-  padding: 0;
-}
-
-/* 상단 랭크 정보 스타일 */
-.rank-top {
-  background-color: #fff;
-  padding: 20px;
-  text-align: center;
-  font-family: 'TmoneyRoundWindExtraBold';
-}
-
-.rank-top h2 {
   font-size: 24px;
-  margin: 0;
-}
-
-.rank-top h3 {
-  font-size: 18px;
   margin: 10px 0;
+  margin-top: 5%;
 }
 
 /* 버튼 스타일 */
@@ -94,10 +57,27 @@ button {
   background-color: #fff;
   padding: 20px;
   display: flex;
+  font-family: Arial, sans-serif;
+  background-color: #f0f0f0;
+  margin: 0;
+  padding: 0;
   align-items: center;
   justify-content: center;
 }
 
+/* 버튼 스타일 */
+button {
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  display: block;
+  margin-bottom: 10px;
+}
+
 .rank-body ul,
 .rank-body table {
   list-style: none;
@@ -124,12 +104,16 @@ button {
 .rank-bottom {
   background-color: #fff;
   padding: 20px;
+  padding-left: 0;
   text-align: center;
-  font-family: 'TmoneyRoundWindExtraBold';
+  font-family: "TmoneyRoundWindExtraBold";
+  position: fixed;
+  width: 100%;
+  bottom: 0%;
+  border-top: black solid 1px;
 }
-.rank-body button{
-  font-family: 'TmoneyRoundWindExtraBold';
-
+.rank-body button {
+  font-family: "TmoneyRoundWindExtraBold";
 }
 
 .rank-body ul,
@@ -155,37 +139,36 @@ button {
 }
 
 /* 하단 링크 스타일 */
-.rank-bottom {
-  background-color: #fff;
-  padding: 20px;
-  text-align: center;
-}
 
 .rank-bottom a {
   margin-right: 10px;
   font-size: 16px;
-  color: #007bff;
   text-decoration: none;
-}
-.rank-bottom a {
-  margin-right: 10px;
-  font-size: 16px;
   color: black;
-  font-family: 'TmoneyRoundWindExtraBold';
+  font-family: "TmoneyRoundWindExtraBold";
   text-decoration: none;
+  border-radius: 4px;
+  background-color: #6698cb;
+  padding: 10px;
+  margin: 5px;
 }
 
-/* 랭킹 목록 표시/숨김 스타일 */
 .rank-body-department,
 .rank-body-personal {
   display: none;
+  font-family: "TmoneyRoundWindExtraBold";
+  background-color: whitesmoke;
+  border-top: black solid 1px;
+  overflow: auto;
+  font-size: 20px;
 }
-/* 랭킹 목록 표시/숨김 스타일 */
-.rank-body-department,
-.rank-body-personal {
-  display: none;
-  font-family: 'TmoneyRoundWindExtraBold';
-}
-#personal-button{
+
+#personal-button {
   margin-left: 10px;
+}
+
+.rank-body-department ul,
+.rank-body-personal ul {
+  list-style-type: decimal;
+  font-size: 20px;
 }
