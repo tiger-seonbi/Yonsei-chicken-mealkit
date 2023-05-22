@@ -21,6 +21,9 @@ body {
   font-weight: 900;
   font-size: 40px;
   font-family: "TmoneyRoundWindExtraBold";
+  width: 90%;
+  height: 15vh;
+  margin-top: 10vh;
 }
 
 .chicken,
@@ -31,14 +34,15 @@ body {
 .chicken img,
 .machine img {
   top: 20px;
-  width: 30%; /* 이미지의 최대 너비 설정 */
-  height: 30%; /* 이미지의 높이 자동 조정 */
+  width: 50%; /* 이미지의 최대 너비 설정 */
+  height: 50%; /* 이미지의 높이 자동 조정 */
 }
 
 #timer {
   font-size: 25px;
   border: 3px solid #ffd700;
   text-align: center;
+  margin-top: 25vw;
 }
 
 div > .hidden {
