@@ -21,7 +21,7 @@
             <div class="chicken-image">
                 <!-- 치킨 이미지 -->
                 {% block chicken_image %}{% endblock %}
-                <audio id="audioElement" src="{% static './audio/ysck.mp3' %}" {% if base_audio_play %}autoplay loop{% endif %}></audio>
+                {% comment %} <audio id="audioElement" src="{% static './audio/ysck.mp3' %}" {% if base_audio_play %}autoplay loop{% endif %}></audio> {% endcomment %}
             </div>
             {% block extra_scripts %}{% endblock %}
             {% block extra_content %}{% endblock %}
@@ -35,7 +35,7 @@
     </div>
     
     <script>
-        var audioElement = document.getElementById("audioElement");
+        {% comment %} var audioElement = document.getElementById("audioElement");
         audioElement.volume = 0.5; // adjust the volume as desired
         
         // Pause audio when the page is being unloaded (e.g., navigating to a different page)
@@ -43,7 +43,7 @@
             if (typeof base_audio_play !== 'undefined' && base_audio_play) {
                 audioElement.pause();
             }
-        });
+        }); {% endcomment %}
         
         // Resume audio when the page is loaded or switched to another tab
         window.addEventListener("load", function() {

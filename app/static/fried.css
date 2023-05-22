@@ -19,7 +19,7 @@ body {
   left: 50%;
   transform: translate(-50%, -50%);
   font-weight: 900;
-  font-size: 40px;
+  font-size: 6.5vw;
   font-family: "TmoneyRoundWindExtraBold";
 }
 
@@ -36,9 +36,10 @@ body {
 }
 
 #timer {
-  font-size: 25px;
+  font-size: 1.5em;
   border: 3px solid #ffd700;
   text-align: center;
+  font-family: 'TmoneyRoundWindExtraBold';
 }
 
 div > .hidden {
