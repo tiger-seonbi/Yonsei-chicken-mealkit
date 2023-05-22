@@ -38,6 +38,7 @@ body {
   font-size: 6.5vw;
   font-family: "TmoneyRoundWindExtraBold";
   white-space: nowrap;
+  text-align: center;
 }
 
 #fur-image {
@@ -118,5 +119,5 @@ div > .hidden {
   font-size: 6vw;
   padding: 10px;
   border-radius: 5px;
-  background-color: yellow;
+  
 }
