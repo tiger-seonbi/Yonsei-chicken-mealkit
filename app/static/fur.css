@@ -12,10 +12,7 @@
     align-items: center;
     position: relative;
   }
-p {
-    font-family: 'Dongle';
 
-}
   
   #fur-image {
     display: block;
@@ -38,9 +35,16 @@ p {
     left: 50%;
     transform: translate(-50%, -50%);
     font-weight: 900;
-    font-size: 40px;
+    font-size: 6.5vw;
     font-family: 'TmoneyRoundWindExtraBold';
+    white-space: nowrap;
   }
+
+#fur-image{
+  margin-top: 9vh;
+}
+
+
 /* 추가적인 스타일을 여기에 작성하세요. */
 /* 추가적인 스타일을 여기에 작성하세요. */
 .modal {
