@@ -12,6 +12,11 @@
     <div class="rank-top">
       <h2>고대가 지금까지 구운 치킨 개수 : <span id="chicken-count"> {{count}} </span></h2>
       <h3>어떤 학과가 연새를 제일 많이 튀겼나?</h3>
+      
+
+
+
+      
     </div>
     <div class="rank-body">
       <button onclick="department" id="department-button">
@@ -23,19 +28,34 @@
     </div>
     <div class="rank-body-department" style="display: none">
       <ul>
-        <li>공과대학 : 12개</li>
-        <li>문과대학 : 9개</li>
-        <li>경영대학 : 7개</li>
-        <li>심리학부 : 3개</li>
+        {%for dept in dept_list%}
+        <li>{{dept.department}} : {{dept.count}}마리</li>
+        {%endfor%}
+        {% comment %} <li>호기심리 : {{hogi_sum}}개</li>
+        <li>인간사랑 : {{ingan_sum}}개</li>
+        <li>애국경영 : {{aeguk_sum}}개</li>
+        <li>녹두문대 : {{nokdu_sum}}개</li>
+        <li>자주생명 : {{jajuLife_sum}}개</li>
+        <li>호안정대 : {{hoan_sum}}개</li>
+        <li>자주이과대 : {{jajuLife_sum}}개</li>
+        <li>강철공대 : {{gangcheol_sum}}개</li>
+        <li>호혈의대 : {{hohyeol_sum}}개</li>
+        <li>청년사대 : {{cheongnyeon_sum}}개</li>
+        <li>첨단정보 : {{cheomdan_sum}}개</li>
+        <li>창조조형 : {{changjo_sum}}개</li>
+        <li>무한국제 : {{muhan_sum}}개</li>
+        <li>호성미디어 : {{hoseong_sum}}개</li>
+        <li>호림보과 : {{horim_sum}}개</li>
+        <li>선도자전 : {{seondo_sum}}개</li>
+        <li>민중간호 : {{minjung_sum}}개</li> {% endcomment %}
       </ul>
     </div>
 
     <div class="rank-body-personal" style="display: none">
       <ul>
-        <li>sexy윤석 : 5개</li>
-        <li>2 : 3개</li>
-        <li>1 : 2개</li>
-        <li>myung99 : 1개</li>
+        {%for user in user_list%}
+        <li>{{user.username}} : {{user.count}}마리</li>
+        {%endfor%}
       </ul>
     </div>
     <div class="rank-bottom">
