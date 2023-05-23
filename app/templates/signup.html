@@ -5,7 +5,6 @@
 <link rel="stylesheet" type="text/css" href="{% static 'signup.css' %}">
 {% endblock css %}
 {% block content %}
-{{ error }}
 <div class="container">
 <form action="" method="POST">
     {% csrf_token %}
@@ -45,6 +44,7 @@
     </div>
     <input type="submit" value="회원가입">
 </form>
+<p>{{ error }}</p>
 <a href="{% url 'login' %}">로그인</a>
 <a href="{% url 'main' %}">홈으로 </a>
 </div>

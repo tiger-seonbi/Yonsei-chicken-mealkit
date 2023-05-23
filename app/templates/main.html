@@ -18,18 +18,18 @@
       <div class="game-name">연새 치킨 튀기기</div>
       <div class="game-actions">
         <div class="game-action">
-          <a onclick="playAudio1(event)" href="#" id="audioElement">
+          <a  href="/fur" >
             연새 잡기
           </a>
         </div>
         <div class="game-action">
-          <a onclick="playAudio2(event)" href="/rank" id="audioElement"
-            >연새 닭장</a
+          <a href="/rank"  >연새 닭장</a
           >
         </div>
       </div>
+      
       <div class="header">
-        <div class="user-actions">
+          <div class="user-actions">
           {% if not user.is_authenticated %}
           <div class="user-action">
             <a href="/login">로그인</a>
@@ -46,9 +46,10 @@
           {% endif %}
         </div>
       </div>
+      <audio controls src="../static/audio/ysck.mp3"/>
     </div>
 
-    <script>
+    {% comment %} <script>
       function playAudio1(event) {
         event.preventDefault();
         var audioElement = new Audio("{% static 'audio/dakcry.mp3' %}");
@@ -65,7 +66,7 @@
           location.href = "{% url 'rank' %}";
         }, 3000);
       }
-    </script>
+    </script> {% endcomment %}
   </body>
 </html>
 

@@ -9,6 +9,7 @@
     <link rel="stylesheet" type="text/css" href="{% static 'rank.css' %}" />
   </head>
   <body>
+    <img class= award src="{% static '../static/image/award.png' %}">
     <div class="rank-top">
       <h2>고대가 지금까지 구운 치킨 개수 : <span id="chicken-count"> {{count}} </span></h2>
       <h3>어떤 학과가 연새를 제일 많이 튀겼나?</h3>
@@ -62,6 +63,7 @@
       <a href="{% url 'main' %}">홈으로</a>
       <a href="/fur">치킨 더 굽기</a>
     </div>
+    <audio autoplay src="../static/audio/ysck.mp3"/>
   </body>
 </html>
 
