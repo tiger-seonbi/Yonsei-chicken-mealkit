@@ -79,11 +79,11 @@ def rank(request):
   minjung_sum = len(minjung)
 
   #개인별 기록
-  all_user = User.objects.all()
+  all_user = Person.objects.all()
   user_len = len(all_user)
   user_list = []
   for i in range(user_len):
-    user_name = all_user[i].username
+    user_name = all_user[i].nickname
     user_id = all_user[i].id
     user_chicken = CountChicken.objects.filter(author=user_id)
     user_chicken_count = len(user_chicken)
