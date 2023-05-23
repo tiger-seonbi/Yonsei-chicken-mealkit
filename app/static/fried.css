@@ -11,16 +11,19 @@ body {
   align-items: center;
   justify-content: center;
   min-height: 100vh;
+  position: relative;
 }
 
 .item {
   position: absolute;
-  top: 10%;
+  top: 15%;
   left: 50%;
+  width: 83%;
+  text-align: center;
   transform: translate(-50%, -50%);
   font-weight: 900;
   font-size: 6.5vw;
-  font-family: "TmoneyRoundWindExtraBold";
+  font-family: "TmoneyRoundWindExtraBold"
 }
 
 .chicken,
@@ -31,15 +34,16 @@ body {
 .chicken img,
 .machine img {
   top: 20px;
-  width: 30%; /* 이미지의 최대 너비 설정 */
-  height: 30%; /* 이미지의 높이 자동 조정 */
+  width: 55%; /* 이미지의 최대 너비 설정 */
+  height: 55%; /* 이미지의 높이 자동 조정 */
 }
 
 #timer {
   font-size: 1.5em;
   border: 3px solid #ffd700;
   text-align: center;
-  font-family: 'TmoneyRoundWindExtraBold';
+  position: relative;
+  font-family:'TmoneyRoundWindExtraBold';
 }
 
 div > .hidden {
@@ -98,7 +102,6 @@ div > .hidden {
   width: 90%;
   transform: translate(5%, 5%);
   padding: 0;
-  margin: 0;
 }
 
 i {

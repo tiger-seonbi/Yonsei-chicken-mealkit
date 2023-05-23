@@ -6,7 +6,7 @@
 {% endblock %}
 
 {% block mention %}
-    <h2 class="item">튀김기로 치킨을 터치하고 드래그하여 튀겨주세요!</h2>
+    <h2 class="item">치킨을 튀김기로 드래그하여 바삭하게 튀겨주세요!</h2>
 {% endblock %}
 
 {% block chicken_image %}
@@ -22,14 +22,12 @@
       <img src="{% static '/image/fried1.gif' %}" id="transformed-machine" alt="transformed-machine" style="display: none";>
     </div>
 </div>
-
-
     <div class="modal hidden">
       <div class="modal-content">
         <div class="box">
-          <h2>연새치킨이 찾아왔어요!</h2>
+          <h3>연새치킨이 찾아왔어요!</h3>
           <img src="../static/image/kfc.jpg"/>
-          <p>촉촉하게~ 쫄깃하게~</p>
+          <p style="margin-top: 0;">촉촉하게~ 쫄깃하게~</p>
           <p>껍질은 바삭하게~</p>
           <p>아 너무 맛있어~ 아 환상의 맛~</p>
           <p>아~ 아~ 한마리 더 먹고 싶다~</p>
@@ -59,7 +57,7 @@
     const transformed_machine = document.getElementById('transformed-machine');
     const timerElement = document.getElementById('timer');
     const modal = document.querySelector(".modal");
-
+    const item = document.querySelector('.item');
     let timer;
     let timeLeft = 5;
     let touchStartX = 0;
@@ -95,6 +93,7 @@
             timer = setInterval(updateTimer, 1000);
             machineImage.style.display = 'none';
             transformed_machine.style.display = 'flex';
+            itemdissapear();
         }
     }
 
@@ -147,7 +146,9 @@
   }
 
     /* 버튼 클릭했을 때 모달 비활성화하는 함수 실행하기 */
-
+    function itemdissapear() {
+      item.style.display = 'none';
+    }
     closeBtn.addEventListener("click", closeModal);
     overlay.addEventListener("click", closeModal);
 
