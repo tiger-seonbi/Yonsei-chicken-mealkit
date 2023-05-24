@@ -26,18 +26,18 @@
       <div class="modal-content">
         <div class="box">
           <h3>연새치킨이 찾아왔어요!</h3>
-          <img src="../static/image/kfc.jpg"/>
+          <img id = "kfc" src="../static/image/kfc.jpg"/>
           <p style="margin-top: 0;">촉촉하게~ 쫄깃하게~</p>
           <p>껍질은 바삭하게~</p>
           <p>아 너무 맛있어~ 아 환상의 맛~</p>
           <p>아~ 아~ 한마리 더 먹고 싶다~</p>
-       
-          <a href="{% url 'main' %}" >홈으로</a>
-          <a href="{% url 'rank' %}" >치킨창고</a>
-            
+          <div class='btngroup'>
+            <a href="{% url 'main' %}" >홈으로</a>
+            <a href="{% url 'rank' %}" >치킨창고</a>
+          </div>
             
         </form>
-          <i class="fas fa-duotone fa-rocket fa-bounce fa-2xl"></i>
+          {% comment %} <i class="fas fa-duotone fa-rocket fa-bounce fa-2xl"></i> {% endcomment %}
         </div>
     </div>
     <div class="modal-overlay"></div>

@@ -75,16 +75,21 @@ body {
   height: 40%;
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2), 0 6px 6px rgba(0, 0, 0, 0.4);
   z-index: 10;
+  box-sizing: border-box;
 }
 
 .box {
+  display:flex;
+  flex-direction: column;
+  justify-content: space-around;
+  box-sizing: border-box;
   border: 2px solid black;
   border-radius: 10px;
   font-family: "TmoneyRoundWindExtraBold";
   height: 90%;
   width: 90%;
   transform: translate(5%, 5%);
-  padding: 0;
+  padding: 5%;
   margin-right: 0px;
 }
 
@@ -110,6 +115,7 @@ div > .hidden {
 .box h2,
 .box p {
   font-size: 6vw;
+  margin: 0;
 }
 .box h2 {
   margin-top: 25px;

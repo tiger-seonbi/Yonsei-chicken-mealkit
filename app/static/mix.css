@@ -85,6 +85,10 @@
   }
   
   .box {
+  display:flex;
+  flex-direction: column;
+  justify-content: space-around;
+  box-sizing: border-box;
   border: 2px solid black;
   border-radius: 10px;
   font-family: 'TmoneyRoundWindExtraBold';
@@ -95,7 +99,7 @@
   margin : 0;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  /* justify-content: center; */
   align-items: center;
   }
   
@@ -105,3 +109,9 @@
   margin-top: 40px;
   z-index: 20;
   }
+
+.box h2,
+.box p {
+  font-size: 6vw;
+  margin: 0;
+}

@@ -95,13 +95,18 @@ div > .hidden {
 }
 
 .box {
+  display:flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  box-sizing: border-box;
   border: 2px solid black;
   border-radius: 10px;
   font-family: "TmoneyRoundWindExtraBold";
   height: 90%;
   width: 90%;
   transform: translate(5%, 5%);
-  padding: 0;
+  padding: 5% 0%;
 }
 
 i {
@@ -130,6 +135,19 @@ i {
   overflow: clip;
 }
 
-.box img {
-  height: 15vh;
+#kfc {
+  width: 50%;
+  height: auto;
+}
+
+.box h3,
+.box p {
+  font-size: 6vw;
+  margin: 0;
+}
+
+.btngroup {
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
 }
