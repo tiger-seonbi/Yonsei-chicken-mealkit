@@ -17,7 +17,7 @@ body {
 #fur-image {
   display: block;
   margin: 0 auto;
-  width: 40%;
+  max-width: 100%;
 }
 .canvas-container {
   position: absolute;
@@ -27,6 +27,11 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.top p {
+  margin : 0;
+  margin-bottom: 20vh;
 }
 
 .top {
@@ -39,7 +44,10 @@ body {
   font-family: "TmoneyRoundWindExtraBold";
   white-space: nowrap;
   text-align: center;
+  
 }
+
+
 
 #fur-image {
   margin-top: 9vh;

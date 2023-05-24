@@ -36,7 +36,7 @@ body {
 }
 
 .machine img {
-  top: 20px;
+  top: 2vh;
   width: 55%; /* 이미지의 최대 너비 설정 */
   height: 55%; /* 이미지의 높이 자동 조정 */
 }
