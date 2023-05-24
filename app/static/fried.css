@@ -31,7 +31,10 @@ body {
   text-align: center;
 }
 
-.chicken img,
+.chicken img {
+  width: 30%; /* 이미지의 최대 너비 설정 */
+}
+
 .machine img {
   top: 20px;
   width: 55%; /* 이미지의 최대 너비 설정 */
@@ -142,7 +145,7 @@ i {
 
 .box h3,
 .box p {
-  font-size: 6vw;
+  font-size: 3vw;
   margin: 0;
 }
 

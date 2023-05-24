@@ -24,7 +24,7 @@
 {% endblock %}
 
 {% block chicken_image %}
-<img id="fur-image" src="{% static 'full_fur_image.jpg' %}" alt="Chicken Fur">
+<img id="fur-image" src="{% static '/image/step1.png' %}" alt="Chicken Fur">
 {% endblock %}
 
 {% block extra_scripts %}
@@ -50,10 +50,10 @@ document.addEventListener('DOMContentLoaded', function() {
     
     if (imageCount % 3 === 0 && imageCount <= maxClicks) {
       if (imageCount === maxClicks ) {
-        furImage.src = '/static/no_fur_image.jpg';
+        furImage.src = '/static/3_step2.png';
       }
       else {
-          furImage.src = `/static/${imageCount / 3}_3_fur_image.jpg`;
+          furImage.src = `/static/${imageCount / 3}_step2.png`;
           updateProgressBar();
       }
     }

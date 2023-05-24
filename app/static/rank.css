@@ -174,8 +174,8 @@ button {
 .award {
   display: block;
   margin: 0 auto;
-  width: 70%;
+  width: 50%;
   height: auto;
-  margin-bottom: 20px;
-  margin-top: 20px;
+  margin-top: 5vh;
+  margin-bottom: 5vh;
 }

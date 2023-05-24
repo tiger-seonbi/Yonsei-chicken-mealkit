@@ -129,8 +129,9 @@ body {
 }
 
 .image img {
-  max-width: 100%;
+  max-width: 40%;
   height: auto;
+  margin-top: 20%;
 }
 
 .game-actions,
